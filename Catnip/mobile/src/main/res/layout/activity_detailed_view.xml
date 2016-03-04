@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context="com.cs160.mleefer.PoliticalCompass.DetailedViewActivity"
+    android:background="#5c84f8"
+    android:id="@+id/bg">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Position"
+        android:id="@+id/position"
+        android:textSize="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#ffffff" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Name"
+        android:id="@+id/name"
+        android:textSize="16sp"
+        android:layout_marginLeft="10dp"
+        android:layout_alignTop="@+id/position"
+        android:layout_toEndOf="@+id/position"
+        android:textColor="#ffffff" />
+
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/photo"
+        android:layout_marginLeft="10dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/position" >
+
+        <ImageView
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:id="@+id/photo_inner"
+            android:src="@drawable/fred_160"/>
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Website: "
+        android:id="@+id/website_label"
+        android:textSize="13sp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#ffffff"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/textView5" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="http://www.google.com"
+        android:id="@+id/website"
+        android:textSize="13dp"
+        android:textColor="#ffffff"
+        android:layout_alignTop="@+id/website_label"
+        android:layout_toEndOf="@+id/website_label" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Email: "
+        android:id="@+id/textView5"
+        android:textSize="13dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#ffffff"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/photo" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="stuff@site.com"
+        android:id="@+id/email"
+        android:textSize="13dp"
+        android:textColor="#ffffff"
+        android:layout_alignTop="@+id/textView5"
+        android:layout_toEndOf="@+id/textView5" />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_toEndOf="@+id/photo"
+        android:id="@+id/frameLayout"
+        android:layout_above="@+id/textView5"
+        android:layout_below="@+id/name">
+
+        <RelativeLayout
+            android:layout_width="157dp"
+            android:layout_height="114dp"
+            android:layout_gravity="left|center_vertical"
+            android:background="#c8c8c8"
+            android:layout_alignParentStart="true"
+            android:layout_marginLeft="6dp"
+            android:id="@+id/relativeLayout"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:id="@+id/imageView5"
+                android:layout_gravity="left|top"
+                android:src="@drawable/twitter"
+                android:layout_marginLeft="8dp"
+                android:layout_marginRight="10dp"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginTop="8dp" />
+
+            <TextView
+                android:layout_width="138dp"
+                android:layout_height="107dp"
+                android:text="And their words to the root and the rock would echo down, down and the magic would hear and answer, faint as a falling butterfly.  "
+                android:id="@+id/twitter"
+                android:layout_gravity="right|center_vertical"
+                android:textColor="#000000"
+                android:textSize="11sp"
+                android:layout_alignParentLeft="true"
+                android:layout_marginLeft="38dp"
+                android:layout_alignParentBottom="true"
+                android:layout_alignParentTop="true"
+                android:layout_alignParentEnd="true"
+                android:layout_marginRight="5dp" />
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="D"
+        android:id="@+id/party"
+        android:textSize="25sp"
+        android:layout_marginRight="20dp"
+        android:textColor="#ffffff"
+        android:layout_gravity="right|bottom"
+        android:layout_alignParentEnd="true"
+        android:layout_alignBottom="@+id/website" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Committees"
+        android:id="@+id/textView3"
+        android:textSize="20dp"
+        android:layout_marginTop="16dp"
+        android:textColor="#ffffff"
+        android:layout_below="@+id/website_label"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="6dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:layout_below="@+id/textView3"
+        android:layout_alignParentStart="true"
+        android:id="@+id/frameLayout2"
+        android:background="#ffffff">
+
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/committees"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Recent Bills"
+        android:id="@+id/textView4"
+        android:textSize="20dp"
+        android:layout_marginLeft="10dp"
+        android:textColor="#ffffff"
+        android:layout_alignParentEnd="false"
+        android:layout_marginBottom="6dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/frameLayout2"
+        android:layout_marginTop="20dp" />
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/textView4"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/frameLayout3"
+        android:background="#ffffff">
+        <ListView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/recent_bills"
+            android:layout_gravity="center" />
+    </FrameLayout>
+
+</RelativeLayout>

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+    android:layout_height="match_parent" android:gravity="center" android:layout_gravity="center"
+    tools:context=".MainActivity" android:orientation="vertical" tools:deviceIds="wear_round"
+    android:background="#4489fe"
+    android:id="@+id/bg">
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="100">
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/blue"
+            android:layout_weight="60"
+            android:background="#5c84f8"></FrameLayout>
+
+        <FrameLayout
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:layout_gravity="center_vertical"
+            android:id="@+id/red"
+            android:layout_weight="40"
+            android:background="#c33f3f" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="40"
+        android:id="@+id/name"
+        android:layout_centerVertical="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:layout_toEndOf="@+id/space" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CA"
+        android:id="@+id/state"
+        android:gravity="center_horizontal"
+        android:textSize="14sp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentEnd="true" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2012 Race"
+        android:id="@+id/position"
+        android:gravity="center_horizontal"
+        android:textSize="16sp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="5dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Alameda"
+        android:id="@+id/county"
+        android:gravity="center_horizontal"
+        android:textSize="14sp"
+        android:layout_above="@+id/state"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+    <Space
+        android:layout_width="0px"
+        android:layout_height="20px"
+        android:layout_alignBottom="@+id/name"
+        android:layout_centerHorizontal="true"
+        android:id="@+id/space" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="60"
+        android:id="@+id/bluetext"
+        android:gravity="center_horizontal"
+        android:textSize="20sp"
+        android:layout_alignBottom="@+id/name"
+        android:layout_alignParentStart="true"
+        android:layout_toStartOf="@+id/name" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Obama vs Romney"
+        android:id="@+id/textView"
+        android:gravity="center_horizontal"
+        android:textSize="16sp"
+        android:layout_below="@+id/position"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true" />
+
+</RelativeLayout>
+
