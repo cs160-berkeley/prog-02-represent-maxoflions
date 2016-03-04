@@ -4,17 +4,16 @@ Briefly describe your app here.
 
 ## Authors
 
-FirstName LastName ([your_email@berkeley.edu](mailto:your_email@berkeley.edu))
+Max Leefer ([maxoflions@berkeley.edu](mailto:maxoflions@berkeley.edu))
 
 ## Demo Video
 
-See [your demo video title here] (https://link_to_your_video)
+See [video] (https://youtu.be/NdUsIF3cpp4)
 
 ## Screenshots
 
-<img src="screenshots/main.png" height="400" alt="Screenshot"/>
+None.
 
 ## Acknowledgments
 
-* Hat tip to anyone who's code was used
-* Any other support
+Thanks to stackoverflow and to the TAs for the catnip code that served as my base
