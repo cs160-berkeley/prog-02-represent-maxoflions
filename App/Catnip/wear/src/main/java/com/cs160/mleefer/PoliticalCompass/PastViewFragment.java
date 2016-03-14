@@ -30,8 +30,8 @@ public class PastViewFragment extends Fragment {
 
     // TODO: Rename and change types of parameters
     private float obama;
-    private float romney;
-    private String location;
+    private String state;
+    private String county;
 
     private OnFragmentInteractionListener mListener;
 
@@ -46,13 +46,9 @@ public class PastViewFragment extends Fragment {
      * @return A new instance of fragment PastViewFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static PastViewFragment newInstance(float obama, float romney, String loc) {
+    public static PastViewFragment newInstance(Bundle b) {
         PastViewFragment fragment = new PastViewFragment();
-        Bundle args = new Bundle();
-        args.putFloat(OBAMA, obama);
-        args.putFloat(ROMNEY, romney);
-        args.putString("LOCATION", loc);
-        fragment.setArguments(args);
+        fragment.setArguments(b);
         return fragment;
     }
 
@@ -60,9 +56,9 @@ public class PastViewFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            obama = getArguments().getFloat(OBAMA);
-            romney = getArguments().getFloat(ROMNEY);
-            location = getArguments().getString("LOCATION");
+            obama = (float)((double) getArguments().getDouble("OBAMAP"));
+            state = getArguments().getString("STATE");
+            county = getArguments().getString("COUNTY");
         }
     }
 
@@ -79,18 +75,13 @@ public class PastViewFragment extends Fragment {
         TextView bluetext = (TextView) v.findViewById(R.id.bluetext);
         TextView state = (TextView) v.findViewById(R.id.state);
         TextView county = (TextView) v.findViewById(R.id.county);
-        red.setLayoutParams(new TableLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 0.3));//romney));
-        blue.setLayoutParams(new TableLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, (float) 0.7));//obama));
+        red.setLayoutParams(new TableLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, 100 - obama));//romney));
+        blue.setLayoutParams(new TableLayout.LayoutParams(LinearLayout.LayoutParams.WRAP_CONTENT, LinearLayout.LayoutParams.WRAP_CONTENT, obama));//obama));
         DecimalFormat df = new DecimalFormat("#.##");
-        redtext.setText(df.format(romney) + "%");
         bluetext.setText(df.format(obama) + "%");
-        if (location.equals("66666")) {
-            state.setText("Hell");
-            county.setText("Seventh Circle");
-        } else {
-            state.setText("CA");
-            county.setText("Alameda");
-        }
+        redtext.setText(df.format(100 - obama) + "%");
+        state.setText(this.state);
+        county.setText(this.county);
         return v;
     }
 

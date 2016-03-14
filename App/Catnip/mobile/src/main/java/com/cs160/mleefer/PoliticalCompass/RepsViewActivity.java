@@ -29,48 +29,37 @@ public class RepsViewActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_reps_view);
 
-        String reps = getIntent().getStringExtra("LOCATION");
+        ArrayList<CandidateInfo> reps = getIntent().getParcelableArrayListExtra("CANDIDATES");
 
 
-        final List<CandidateInfo> candidatesData = new ArrayList<>();
-        //TODO get reps from location instead
-        String[] fake_candidates = {"Jon Stewart", "John Doe", "Deez Nuts"};
-        for(String rep_name :fake_candidates)
-        {
-            candidatesData.add(new CandidateInfo(rep_name));
-        }
-        candidatesData.get(2).setParty("Republican");
-
-        CandidateInfo allCands[] = new CandidateInfo[candidatesData.size()];
-        CandidateInfo.all_candidates = (CandidateInfo[]) candidatesData.toArray(allCands);
+//        final List<CandidateInfo> candidatesData = new ArrayList<>();
+//        //TODO get reps from location instead
+//        String[] fake_candidates = {"Jon Stewart", "John Doe", "Deez Nuts"};
+//        for(String rep_name :fake_candidates)
+//        {
+//            candidatesData.add(new CandidateInfo(rep_name));
+//        }
+//        candidatesData.get(2).setParty("Republican");
+//
+        CandidateInfo allCands[] = new CandidateInfo[reps.size()];
+        CandidateInfo.all_candidates = reps.toArray(allCands);
 
         ListView list = (ListView) findViewById(R.id.listView);
-        MyAdapter mAdapter=new MyAdapter(getApplicationContext(), candidatesData);
+        MyAdapter mAdapter=new MyAdapter(getApplicationContext(), reps);
 
         mAdapter.notifyDataSetInvalidated();
         list.setAdapter(mAdapter);
-
-        Intent intent = new Intent(this, PhoneToWatchService.class);
-        String[] rep_strings = new String[candidatesData.size()];
-        for(int i=0;i<candidatesData.size();i++) {
-            rep_strings[i] = candidatesData.get(i).toWatchString();
-            Log.d("DEBUG", rep_strings[i]);
-        }
-        intent.putExtra("FOUND_CANDIDATES", rep_strings);
-        intent.putExtra("LOCATION", reps);
-        startService(intent);
     }
 
 
     public void goToDetailedView(CandidateInfo candy) {
         Intent intent = new Intent(this, DetailedViewActivity.class);
-        intent.putExtra("REP", candy);
+        intent.putExtra("REP", (Parcelable) candy);
         startActivity(intent);
     }
 
     public class MyAdapter extends ArrayAdapter<CandidateInfo> {
 
-        private ArrayList<CandidateInfo> mData = new ArrayList<>();
         private final Context context;
         private final List<CandidateInfo> values;
 
@@ -93,7 +82,7 @@ public class RepsViewActivity extends Activity {
         }
 
         public void addItem(final CandidateInfo item) {
-            mData.add(item);
+            values.add(item);
             notifyDataSetChanged();
         }
 
@@ -120,14 +109,23 @@ public class RepsViewActivity extends Activity {
             text.setText(values.get(position).getWebsite());
             Linkify.addLinks(text, Linkify.WEB_URLS);
 
+            ImageView pic = (ImageView) rowView.findViewById(R.id.photo_inner);
+            values.get(position).setImage(pic, getApplicationContext());
+
             ImageView details_button = (ImageView) rowView.findViewById(R.id.details_arrow);
+
 
             details_button.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-                    CandidateInfo c = new CandidateInfo(((TextView) ((View) v.getParent().getParent())
-                            .findViewById(R.id.name)).getText().toString());
-                    goToDetailedView(c);
+                    String n = ((TextView) ((View) v.getParent().getParent())
+                            .findViewById(R.id.name)).getText().toString();
+                    for (CandidateInfo cand : CandidateInfo.all_candidates) {
+                        if(cand.getName().equals(n)) {
+                            goToDetailedView(cand);
+                        }
+                    }
+                    Log.d("BAD", "BAD JUJU");
                 }
             });
 

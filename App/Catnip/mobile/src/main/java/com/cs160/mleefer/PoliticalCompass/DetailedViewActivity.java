@@ -51,5 +51,11 @@ public class DetailedViewActivity extends Activity {
         Log.d("T", "COLOR: " + cand.getParty());
         RelativeLayout bg = (RelativeLayout) findViewById(R.id.bg);
         bg.setBackgroundColor(cand.getColor());
+        ListView lst = (ListView) findViewById(R.id.committees);
+        lst.setBackgroundColor(cand.getSubColor());
+        lst = (ListView) findViewById(R.id.recent_bills);
+        lst.setBackgroundColor(cand.getSubColor());
+        ImageView pic = (ImageView) findViewById(R.id.photo_inner);
+        cand.setImage(pic, getApplicationContext());
     }
 }

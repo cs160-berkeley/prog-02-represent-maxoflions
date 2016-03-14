@@ -3,8 +3,11 @@ package com.cs160.mleefer.PoliticalCompass;
 import android.app.Fragment;
 import android.app.FragmentManager;
 import android.content.Context;
+import android.os.Bundle;
 import android.support.wearable.view.FragmentGridPagerAdapter;
+import android.widget.Button;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -14,14 +17,15 @@ public class MyGridPagerAdapter extends FragmentGridPagerAdapter {
 
     private final Context mContext;
     private List mRows;
-    private CandidateInfo[] candidates;
+    private ArrayList<CandidateInfo> candidates;
     private String loc;
+    private Bundle b;
 
-    public MyGridPagerAdapter(Context ctx, FragmentManager fm, CandidateInfo[] cands, String _loc) {
+    public MyGridPagerAdapter(Context ctx, FragmentManager fm, ArrayList<CandidateInfo> cands, Bundle _b) {
         super(fm);
         mContext = ctx;
         candidates = cands;
-        loc = _loc;
+        b = _b;
     }
 
     static final int[] BG_IMAGES = new int[] {
@@ -43,7 +47,7 @@ public class MyGridPagerAdapter extends FragmentGridPagerAdapter {
     }
 
     public int getRowCount() {
-        return candidates.length;
+        return candidates.size();
     }
 
 
@@ -55,7 +59,7 @@ public class MyGridPagerAdapter extends FragmentGridPagerAdapter {
             //                page.titleRes != 0 ? mContext.getString(page.titleRes) : null;
             //        String text =
             //                page.textRes != 0 ? mContext.getString(page.textRes) : null;
-            CandidateInfo cand = candidates[row];
+            CandidateInfo cand = candidates.get(row);
             MainFragment fragment = MainFragment.newInstance(cand.getParty(), cand.getPosition(), cand.getName(), cand.getColor());
 
             // Advanced settings (card gravity, card expansion/scrolling)
@@ -66,7 +70,7 @@ public class MyGridPagerAdapter extends FragmentGridPagerAdapter {
             return fragment;
         } else {
             //TODO get actual values from api
-            PastViewFragment fragment = PastViewFragment.newInstance((float) 68.3, (float) 31.7, loc);
+            PastViewFragment fragment = PastViewFragment.newInstance(b);
             return fragment;
         }
     }

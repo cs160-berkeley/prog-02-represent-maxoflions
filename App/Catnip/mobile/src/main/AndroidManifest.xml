@@ -6,7 +6,7 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
-        android:theme="@style/AppTheme">
+        android:theme="@android:style/Theme.NoTitleBar">
         <activity
             android:name=".LocationSelect"
             android:label="@string/title_activity_location_select">
@@ -34,6 +34,13 @@
             android:name=".RepsViewActivity"
             android:label="@string/title_activity_reps_view" />
         <activity android:name=".DetailedViewActivity"></activity>
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCqTBj9_Kp_djnJp_4Wro8IdMHy0CiZ4g0"/>
     </application>
+
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
 </manifest>

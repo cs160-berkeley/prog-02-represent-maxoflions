@@ -21,12 +21,14 @@ import android.widget.Button;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import java.util.ArrayList;
+
 public class MainActivity extends Activity {
 
     private TextView mTextView;
     private Button mFeedBtn;
     private GestureDetectorCompat mDetector;
-    private CandidateInfo[] candidates;
+    private ArrayList<CandidateInfo> candidates;
     private int curr_cand = 0;
 
     @Override
@@ -42,19 +44,9 @@ public class MainActivity extends Activity {
 //        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
         Intent intent = getIntent();
         Bundle extras = intent.getExtras();
-        String[] locNcands = {};
 
         if (extras != null) {
-            String value = extras.getString("CANDIDATES");
-            Log.d("DEBUG", value);
-            locNcands = value.split("@");
-            String[] cands = locNcands[0].split("%");
-            candidates = new CandidateInfo[cands.length];
-            for (int i=0;i<cands.length;i++) {
-                Log.d("DEBUG", cands[i]);
-                String[] fields = cands[i].split("&", 3);
-                candidates[i] = new CandidateInfo(fields[0], fields[1], fields[2]);
-            }
+            candidates = extras.getParcelableArrayList("CANDIDATES");
         } else
         if (candidates == null) {
             Log.d("DEBUG", "CANDIDATES WAS NULL");
@@ -65,7 +57,7 @@ public class MainActivity extends Activity {
 
 
         final GridViewPager pager = (GridViewPager) findViewById(R.id.pager);
-        pager.setAdapter(new MyGridPagerAdapter(this, getFragmentManager(), candidates, locNcands[1]));
+        pager.setAdapter(new MyGridPagerAdapter(this, getFragmentManager(), candidates, extras));
 //
 
 //        updateRep(candidates[0]);

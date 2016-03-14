@@ -1,6 +1,6 @@
 # PROG 02: Represent!
 
-Briefly describe your app here.
+This app allows the user to view information about the current senators and representatives in their area, both on their phone and on a smartwatch.
 
 ## Authors
 
@@ -12,7 +12,7 @@ See [video] (https://youtu.be/NdUsIF3cpp4)
 
 ## Screenshots
 
-None.
+See the screenshots folder.
 
 ## Acknowledgments
 
